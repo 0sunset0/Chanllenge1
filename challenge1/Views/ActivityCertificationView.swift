@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct ActivityCertificationView: View {
+    
+    @State private var text: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(){
+            Text("제이슨 나 좀 뛴다! 러닝코스")
+                .font(.title)
+                .bold()
+                .padding()
+            
+            Image("activity")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(22)
+                .padding(30)
+        }
     }
 }
 
