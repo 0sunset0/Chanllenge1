@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct Onboarding: View {
-    @State private var selectedIndex: Int = -1
+struct OnboardingView: View {
+    @State private var selection: Int = 0
     @AppStorage("profileAnimal") private var profileAnimal = ""
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     
@@ -17,25 +17,25 @@ struct Onboarding: View {
     var body: some View {
         
         ZStack{
-            Circle()
-                .fill(.blue.opacity(0.1))
-                .frame(width: 200, height: 200)
-                .blur(radius: 50)
-            
+            GlowCircle()
             VStack{
                 Text("당신은 어떤 해양 생물인가요?")
                     .font(.title2)
-            
-                TabView {
-                    AnimalCard(index: 1, selectedIndex: $selectedIndex)
-                    AnimalCard(index: 1, selectedIndex: $selectedIndex)
-                    AnimalCard(index: 1, selectedIndex: $selectedIndex)
-                    AnimalCard(index: 1, selectedIndex: $selectedIndex)
+        
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 10) {
+                        AnimalCardView(index: 0).tag(0)
+                        AnimalCardView(index: 1).tag(1)
+                        AnimalCardView(index: 2).tag(2)
+                        AnimalCardView(index: 3).tag(3)
+                    }
+                    .scrollTargetLayout()
                 }
-                .tabViewStyle(.page)
+                .scrollTargetBehavior(.viewAligned)
+                .padding(.horizontal, 50)
                 
                 Button {
-                    profileAnimal = animals[selectedIndex]
+                    profileAnimal = animals[selection]
                     hasSeenOnboarding = true
                 } label: {
                     Text("다음")
@@ -46,11 +46,9 @@ struct Onboarding: View {
                 .tint(.main)
             }
         }
-
-        
     }
 }
 
 #Preview {
-    Onboarding()
+    OnboardingView()
 }

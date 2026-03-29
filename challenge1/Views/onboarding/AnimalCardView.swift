@@ -7,20 +7,21 @@
 
 import SwiftUI
 
-struct AnimalCard: View {
+struct AnimalCardView: View {
     var index: Int
-    @Binding var selectedIndex: Int
     
     var body: some View {
+
         VStack{
             Image("dolphin")
+                .resizable()
             Text("해파리")
                 .font(.largeTitle)
-
             Text("혼자만의 시간 속에서\n마음을 채워가요!")
                 .font(.body)
                 .multilineTextAlignment(.center)
         }
+        .frame(width: 220, height: 300)
         .background(Color.white)
         .cornerRadius(24)
         .border(.main)

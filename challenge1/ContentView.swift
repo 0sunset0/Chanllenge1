@@ -14,7 +14,7 @@ struct ContentView: View {
         if hasSeenOnboarding {
             HomeView()
         }else{
-            Onboarding()
+            OnboardingView()
         }
     }
 }
