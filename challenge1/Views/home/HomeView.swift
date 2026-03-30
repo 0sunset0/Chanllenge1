@@ -16,15 +16,16 @@ struct HomeView: View {
                 ZStack{
                     GlowCircle()
                     CharacterView()
+                    Sticker()
                 }
                 TodayActivityView()
             }
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
-                    Button{
-                        print("캘린더 뷰 보기")
+                    NavigationLink {
+                        CalendarView()
                     } label: {
-                        Text("캘린더 > ")
+                        Label("캘린더", systemImage: "calendar")
                     }
                 }
             }

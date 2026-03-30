@@ -9,34 +9,37 @@ import SwiftUI
 
 struct OnboardingView: View {
     @State private var selection: Int = 0
-    @AppStorage("profileAnimal") private var profileAnimal = ""
+    @State private var scrolledID: ScrollPosition = .init(idType: Animal.ID.self)
+    
+    @AppStorage("profileAnimal") private var profileAnimal: Int?
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     
-    let animals = ["dolphin", "whale", "turtle", "crab"]
-    
     var body: some View {
-        
         ZStack{
             GlowCircle()
             VStack{
-                Text("당신은 어떤 해양 생물인가요?")
+                Text(Strings.onboardingTitle)
                     .font(.title2)
         
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 10) {
-                        AnimalCardView(index: 0).tag(0)
-                        AnimalCardView(index: 1).tag(1)
-                        AnimalCardView(index: 2).tag(2)
-                        AnimalCardView(index: 3).tag(3)
+                        ForEach(Animal.all) { animal in
+                            AnimalCardView(animal: animal)
+                        }
                     }
                     .scrollTargetLayout()
                 }
                 .scrollTargetBehavior(.viewAligned)
                 .padding(.horizontal, 50)
+                .scrollPosition($scrolledID)
+
                 
+                //컴포넌트로 만들기
                 Button {
-                    profileAnimal = animals[selection]
                     hasSeenOnboarding = true
+                    profileAnimal = scrolledID.viewID(type: Animal.ID.self)
+                    print("애니몰 아이디 : \(profileAnimal!)")
+                    
                 } label: {
                     Text("다음")
                         .frame(maxWidth: .infinity, maxHeight: 50)

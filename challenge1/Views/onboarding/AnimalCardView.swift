@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct AnimalCardView: View {
-    var index: Int
+    var animal: Animal
     
     var body: some View {
 
         VStack{
-            Image("dolphin")
+            Image(animal.image)
                 .resizable()
-            Text("해파리")
+            Text(animal.name)
                 .font(.largeTitle)
-            Text("혼자만의 시간 속에서\n마음을 채워가요!")
+            Text(animal.description)
                 .font(.body)
                 .multilineTextAlignment(.center)
         }
