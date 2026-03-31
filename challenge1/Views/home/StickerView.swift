@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct StickerView: View {
+    
+    let imageName: String
+    
     @State private var offset: CGSize = .zero
     @State private var lastOffset: CGSize = .zero
     
@@ -24,12 +27,12 @@ struct StickerView: View {
     }
     
     var body: some View {
-        Image("sandcastle")
+        Image(imageName)
             .offset(offset)
             .gesture(drag)
     }
 }
 
 #Preview {
-    Sticker()
+    StickerView(imageName: "sandcastle")
 }

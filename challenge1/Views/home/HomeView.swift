@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct HomeView: View {
-    
-    
     var body: some View {
         NavigationStack{
             VStack {
                 ZStack{
                     GlowCircle()
                     CharacterView()
-                    Sticker()
+                    StickerView(imageName: "sandcastle")
+                    StickerView(imageName: "shellfish")
+                    StickerView(imageName: "smallStarfish")
                 }
                 TodayActivityView()
             }
