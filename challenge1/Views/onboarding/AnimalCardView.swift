@@ -16,14 +16,26 @@ struct AnimalCardView: View {
             Image(animal.image)
                 .resizable()
             Text(animal.name)
-                .font(.largeTitle)
+                .font(.largeTitle.bold())
             Text(animal.description)
                 .font(.body)
                 .multilineTextAlignment(.center)
         }
-        .frame(width: 220, height: 300)
+        .frame(width: 225, height: 328)
         .background(Color.white)
-        .cornerRadius(24)
-        .border(.main)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.stroke, lineWidth: 1))
+        .shadow(
+            color: Color(.shadow).opacity(0.2),
+            radius: 10,
+            x: -2,
+            y: 4
+        )
+        .shadow(
+            color: Color(.shadow).opacity(0.2),
+            radius: 10,
+            x: 2,
+            y: 0
+        )
     }
 }

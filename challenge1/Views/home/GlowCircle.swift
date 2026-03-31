@@ -10,9 +10,9 @@ import SwiftUI
 struct GlowCircle: View {
     var body: some View {
         Circle()
-            .fill(.main.opacity(0.1))
-            .frame(width: 200, height: 200)
-            .blur(radius: 50)
+            .fill(.main.opacity(0.15))
+            .frame(width: 220, height: 220)
+            .blur(radius: 80)
     }
 }
 

@@ -17,10 +17,9 @@ struct OnboardingView: View {
     var body: some View {
         ZStack{
             GlowCircle()
-            VStack{
+            VStack(){
                 Text(Strings.onboardingTitle)
                     .font(.title2)
-        
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 10) {
                         ForEach(Animal.all) { animal in
