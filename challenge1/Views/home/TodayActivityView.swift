@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct TodayActivityView: View {
+    @State private var navigate = false
     var body: some View {
         VStack{
             Text("오늘은 제이슨의 러닝코스 달려보세요~!")
                 .font(.title2.bold())
             Text("벌써 40명이나 참여했어요!")
                 .foregroundStyle(.main)
-            ChallengeCertificationButton()
+            ChallengeCertificationButton(navigate: $navigate)
         }
     }
 }

@@ -11,21 +11,33 @@ import PhotosUI
 struct ActivityCertificationView: View {
     @State var selectedItem: PhotosPickerItem?
     @State var selectedImage: UIImage?
+    @Environment(\.dismiss) private var dismiss
     
     var isImageSelected: Bool {
         return selectedImage != nil
     }
     
     var body: some View {
-        VStack(){
-            Text("인증")
-                .font(.title)
-                .bold()
-                .padding()
-            CertificationImageView(selectedImage: $selectedImage)
-            CertificationButton(isImageSelected: isImageSelected)
+
+        NavigationStack{
+            VStack{
+                Text("인증")
+                    .font(.title)
+                    .bold()
+                    .padding()
+                CertificationImageView(selectedImage: $selectedImage)
+                CertificationButton(isImageSelected: isImageSelected)
+                
+            }.toolbar{
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("취소"){
+                        dismiss()
+                    }
+                }
+            }
         }
     }
+    
 }
 
 #Preview {

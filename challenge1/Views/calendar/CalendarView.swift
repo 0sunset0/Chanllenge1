@@ -35,6 +35,7 @@ struct CalendarView: View {
     
     /**
      더미 데이터
+     문제 : SwiftData 객체는 반드시 ModelContext 안에서 살아야 한다. ModelContext 없이 @Model 객체를 생성하면 SwiftData가 추적하지 못한다. 실제 DB랑 연결이 안된 유령 객체가 된다. 
      */
     let activities: [CompletedActivity] = [
         CompletedActivity(

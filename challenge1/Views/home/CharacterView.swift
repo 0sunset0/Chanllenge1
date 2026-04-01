@@ -14,13 +14,13 @@ struct CharacterView: View {
     var body: some View {
         //TODO: 기본 프로필 이미지는 뭘로 하지?
         let animal = Animal.all.first(where: {$0.id == profileAnimal})
-        Image(animal?.image ?? "turtle")
+        Image(animal?.image ?? "dolphin")
             .resizable()
             .frame(width: 350, height: 350)
             .offset(y: isMoving ? -20 : 0)
             .animation(
                 .easeInOut(duration: 0.8).repeatForever(autoreverses: true),
-                value: isMoving
+                    value: isMoving
             )
             .onAppear {
                 isMoving = true

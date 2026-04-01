@@ -10,7 +10,8 @@ import PhotosUI
 
 struct ChallengeCertificationButton: View {
     
-    @State private var navigate = false
+    // @State private var navigate = false
+    @Binding var navigate: Bool
     
     var body: some View {
         Button("인증하기") {
@@ -18,12 +19,15 @@ struct ChallengeCertificationButton: View {
         }
         .buttonStyle(.bordered)
         .tint(.main)
-        .navigationDestination(isPresented: $navigate) {
+        .fullScreenCover(isPresented: $navigate) {
             ActivityCertificationView()
+        }
+        .onChange(of: navigate){
+            print("navigate: \(navigate)")
         }
     }
 }
 
 #Preview {
-    ChallengeCertificationButton()
+    ChallengeCertificationButton(navigate: .constant(false))
 }
