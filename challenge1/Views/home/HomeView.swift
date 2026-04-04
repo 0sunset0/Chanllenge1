@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     var body: some View {
         NavigationStack{
             VStack {
@@ -36,4 +37,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environment(ChallengeStore())
 }

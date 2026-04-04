@@ -22,8 +22,6 @@ struct AnimalCardView: View {
             Text(animal.description)
                 .font(.body)
                 .multilineTextAlignment(.center)
-
-            
         }
         .padding()
         .frame(width: 225, height: 328)

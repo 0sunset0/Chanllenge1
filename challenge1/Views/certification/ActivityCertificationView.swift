@@ -12,13 +12,14 @@ struct ActivityCertificationView: View {
     @State var selectedItem: PhotosPickerItem?
     @State var selectedImage: UIImage?
     @Environment(\.dismiss) private var dismiss
+    let challenge: Challenge
+    
     
     var isImageSelected: Bool {
         return selectedImage != nil
     }
     
     var body: some View {
-
         NavigationStack{
             VStack{
                 Text("인증")
@@ -26,7 +27,7 @@ struct ActivityCertificationView: View {
                     .bold()
                     .padding()
                 CertificationImageView(selectedImage: $selectedImage)
-                CertificationButton(isImageSelected: isImageSelected)
+                CertificationButton(isImageSelected: isImageSelected, challenge: challenge)
                 
             }.toolbar{
                 ToolbarItem(placement: .topBarLeading) {
@@ -37,9 +38,9 @@ struct ActivityCertificationView: View {
             }
         }
     }
-    
 }
 
 #Preview {
-    ActivityCertificationView()
+    ActivityCertificationView(challenge: Challenge.dummies[0])
+        .environment(ChallengeStore())
 }

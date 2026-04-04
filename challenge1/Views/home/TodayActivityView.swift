@@ -7,19 +7,29 @@
 
 import SwiftUI
 
+
 struct TodayActivityView: View {
-    @State private var navigate = false
+    @Environment(ChallengeStore.self) private var store
+    
     var body: some View {
         VStack{
-            Text("오늘은 제이슨의 러닝코스 달려보세요~!")
-                .font(.title2.bold())
-            Text("벌써 40명이나 참여했어요!")
-                .foregroundStyle(.main)
-            ChallengeCertificationButton(navigate: $navigate)
+            if let challenge = store.challenges.first {
+                Text(challenge.title)
+                    .font(.title2.bold())
+                Text("벌써 40명이나 참여했어요!")
+                    .foregroundStyle(.main)
+                ChallengeCertificationButton(challenge: challenge)
+            } else {
+                Text("오늘은 챌린지가 없어요!")
+                    .font(.title2.bold())
+                Text("잠시 쉬어가도 좋아요")
+                    .foregroundStyle(.main)
+            }
         }
     }
 }
 
 #Preview {
     TodayActivityView()
+        .environment(ChallengeStore())
 }

@@ -13,6 +13,11 @@ struct CalendarView: View {
      부모 뷰(HomeView 등)에서 날짜를 제어하거나 공유해야 한다면 → @Binding
      */
     @State private var selectedDate = Date()
+    /**
+     let이 아니라 var인 이유
+     let은 선언할 때 값이 고정되는데, @Environment는 뷰가 생성된 후 SwiftUI가 값을 넣어준다.
+     */
+    @Environment(ChallengeStore.self) private var store
     
     var body: some View {
         VStack{
@@ -32,26 +37,9 @@ struct CalendarView: View {
               }
           }
       }
-    
-    /**
-     더미 데이터
-     문제 : SwiftData 객체는 반드시 ModelContext 안에서 살아야 한다. ModelContext 없이 @Model 객체를 생성하면 SwiftData가 추적하지 못한다. 실제 DB랑 연결이 안된 유령 객체가 된다. 
-     */
-    let activities: [CompletedActivity] = [
-        CompletedActivity(
-            completedDate: Calendar.current.date(from: DateComponents(year: 2026, month: 3, day: 29))!,
-            imageName: "activity",
-            challenge: Challenge(date: Calendar.current.date(from: DateComponents(year: 2026, month: 3, day: 29))!, title: "포항 운하 달리기")
-        ),
-        CompletedActivity(
-            completedDate: Calendar.current.date(from: DateComponents(year: 2026, month: 3, day: 25))!,
-            imageName: "activity",
-            challenge: Challenge(date: Calendar.current.date(from: DateComponents(year: 2026, month: 3, day: 25))!, title: "영일대 해수욕장 걷기")
-        )
-    ]
 
     var filtered: [CompletedActivity] {
-        activities.filter {
+        store.completedActivities.filter {
             // $0 = 배열의 각 액티비티
             // completedDate가 selectedDate와 같은 날인지 확인
             Calendar.current.isDate($0.completedDate, inSameDayAs: selectedDate)
@@ -61,4 +49,5 @@ struct CalendarView: View {
 
 #Preview {
     CalendarView()
+        .environment(ChallengeStore())
 }

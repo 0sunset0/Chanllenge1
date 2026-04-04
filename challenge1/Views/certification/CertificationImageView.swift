@@ -61,4 +61,5 @@ struct CertificationImageView: View {
 
 #Preview {
       CertificationImageView(selectedImage: .constant(nil))
+        
   }

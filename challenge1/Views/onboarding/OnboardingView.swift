@@ -11,7 +11,12 @@ struct OnboardingView: View {
     @State private var selection: Int = 0
     @State private var scrolledID: ScrollPosition = .init(idType: Animal.ID.self)
     
-    @AppStorage("profileAnimal") private var profileAnimal: Int?
+    /**
+     근데 @AppStorage는 UserDefaults를 통해 공유되기 때문에 private이지만 뷰 외부에서 접근할 수 있다 .
+       OnboardingView의 profileAnimal  →  UserDefaults["profileAnimal"]
+       CharacterView의 profileAnimal   →  UserDefaults["profileAnimal"]
+     */
+    @AppStorage("profileAnimal") private var profileAnimal: String?
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     
     var body: some View {
@@ -39,7 +44,7 @@ struct OnboardingView: View {
                 //컴포넌트로 만들기
                 Button {
                     hasSeenOnboarding = true
-                    profileAnimal = scrolledID.viewID(type: Animal.ID.self)
+                    profileAnimal = scrolledID.viewID(type: Animal.ID.self)?.uuidString
                     
                 } label: {
                     Text("다음")

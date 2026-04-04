@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct challenge1App: App {
+    @State private var store = ChallengeStore()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(store)
         }
     }
 }
