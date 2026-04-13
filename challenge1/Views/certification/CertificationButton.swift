@@ -10,7 +10,7 @@ import SwiftUI
 struct CertificationButton: View {
     let isImageSelected: Bool
     let challenge: Challenge
-    @Environment(ChallengeStore.self) private var store
+    @Environment(CompletedChallengeStore.self) private var store
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {

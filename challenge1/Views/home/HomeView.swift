@@ -19,7 +19,7 @@ struct HomeView: View {
                     StickerView(imageName: "smallStarfish", initialX: 140, initialY: 0)
                     StickerView(imageName: "shellfish", initialX: 0, initialY: -190)
                 }
-                TodayActivityView()
+                TodayChallengeView()
             }
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
@@ -37,5 +37,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environment(ChallengeStore())
+        .environment(CompletedChallengeStore())
 }

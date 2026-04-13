@@ -42,5 +42,5 @@ struct ActivityCertificationView: View {
 
 #Preview {
     ActivityCertificationView(challenge: Challenge.dummies[0])
-        .environment(ChallengeStore())
+        .environment(CompletedChallengeStore())
 }

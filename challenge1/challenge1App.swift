@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct challenge1App: App {
-    @State private var store = ChallengeStore()
+    @State private var store = CompletedChallengeStore()
     
     var body: some Scene {
         WindowGroup {

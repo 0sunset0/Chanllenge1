@@ -8,14 +8,15 @@
 import SwiftUI
 
 
-struct TodayActivityView: View {
-    @Environment(ChallengeStore.self) private var store
+struct TodayChallengeView: View {
+    @Environment(CompletedChallengeStore.self) private var store
     
     var body: some View {
         VStack{
             if let challenge = store.challenges.first {
                 Text(challenge.title)
                     .font(.title2.bold())
+                
                 Text("벌써 40명이나 참여했어요!")
                     .foregroundStyle(.main)
                 ChallengeCertificationButton(challenge: challenge)
@@ -30,6 +31,6 @@ struct TodayActivityView: View {
 }
 
 #Preview {
-    TodayActivityView()
-        .environment(ChallengeStore())
+    TodayChallengeView()
+        .environment(CompletedChallengeStore())
 }

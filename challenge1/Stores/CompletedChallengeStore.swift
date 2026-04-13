@@ -10,7 +10,7 @@ import Foundation
  @Observable: 이 값을 쓰는 뷰가 자동으로 다시 그려짐
  */
 @Observable
-class ChallengeStore {
+class CompletedChallengeStore {
     var challenges: [Challenge] = Challenge.dummies
     var completedActivities: [CompletedActivity] = []
 

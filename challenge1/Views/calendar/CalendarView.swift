@@ -17,7 +17,7 @@ struct CalendarView: View {
      let이 아니라 var인 이유
      let은 선언할 때 값이 고정되는데, @Environment는 뷰가 생성된 후 SwiftUI가 값을 넣어준다.
      */
-    @Environment(ChallengeStore.self) private var store
+    @Environment(CompletedChallengeStore.self) private var store
     
     var body: some View {
         VStack{
@@ -49,5 +49,5 @@ struct CalendarView: View {
 
 #Preview {
     CalendarView()
-        .environment(ChallengeStore())
+        .environment(CompletedChallengeStore())
 }
