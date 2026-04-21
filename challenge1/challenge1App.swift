@@ -6,15 +6,25 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct challenge1App: App {
-    @State private var store = CompletedChallengeStore()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(store)
+        }
+        .modelContainer(for: [TodayChallenge.self, CompletedActivity.self]) { result in
+            guard let container = try? result.get() else { return }
+            let context = container.mainContext
+
+            let count = (try? context.fetchCount(FetchDescriptor<TodayChallenge>())) ?? 0
+            guard count == 0 else { return }
+
+            for challenge in TodayChallenge.dummies {
+                context.insert(challenge)
+            }
         }
     }
 }
