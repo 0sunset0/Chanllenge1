@@ -9,21 +9,35 @@ import Foundation
 
 struct Animal: Identifiable{
     let id: UUID
-    let name: String
-    let description: String
+    let namesByLevel: [Level: String]
+    let imagesByLevel: [Level: String]
     
-    func imageName(for level: Level) -> String {
-        return "\(name)_\(level)"
+    func name(for level: Level) -> String {
+        return namesByLevel[level] ?? "돌고래"
+    }
+    
+    func image(for level: Level) -> String {
+        return imagesByLevel[level] ?? "dolphin"
     }
     
     /**
      static는 타입 자체에 속해서, Animal 인스턴스가 없어도 존재 가능
      */
-    static let all: [Animal] = [
-        Animal(id: UUID(), name: "돌고래", description: "사람들과 함께할 때 더 빛나요."),
-        Animal(id: UUID(), name: "해파리", description: "혼자만의 시간 속에서 마음을 채워가요!"),
-        Animal(id: UUID(), name: "바다거북이", description: "느려보여도 끝까지 도착하는 힘이 있어요!"),
-        Animal(id: UUID(), name: "꽃게", description: "겉으로는 단단해 보이지만 속은 여린 편이에요!"),
-        Animal(id: UUID(), name: "불가사리", description: "상처를 회복하는 힘이 강하고, 조용하지만 단단한 내면을 가지고 있어요")
-    ]
+    static let dolphin = Animal(
+        id: UUID(),
+        namesByLevel: [
+            .egg:    "돌고래 알",
+            .baby:   "아기 돌고래",
+            .teen:   "청소년 돌고래",
+            .adult:  "돌고래",
+            .master: "마스터 돌고래"
+        ],
+        imagesByLevel: [
+            .egg:    "dolphin_egg",
+            .baby:   "dolphin_baby",
+            .teen:   "dolphin_teen",
+            .adult:  "dolphin",
+            .master: "dolphin_master"
+        ]
+    )
  }
