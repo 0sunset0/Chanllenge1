@@ -14,7 +14,7 @@ struct CharacterView: View {
     var body: some View {
         //TODO: 기본 프로필 이미지는 뭘로 하지?
         let animal = Animal.all.first(where: {$0.id.uuidString == profileAnimal})
-        Image(animal?.image ?? "dolphin")
+        Image("dolphin")
             .resizable()
             .frame(width: 350, height: 350)
             .offset(y: isMoving ? -10 : 0)

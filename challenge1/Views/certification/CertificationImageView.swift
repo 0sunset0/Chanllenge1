@@ -22,7 +22,7 @@ struct CertificationImageView: View {
                     .padding(30)
                 
             } else {
-                Image(systemName: "camera.fill")
+                Image(systemName: "photo.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(30)

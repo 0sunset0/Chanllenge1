@@ -31,6 +31,11 @@ struct ActivityCertificationView: View {
                         dismiss()
                     }
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("확인"){
+                        dismiss()
+                    }
+                }
             }
         }
     }

@@ -16,7 +16,7 @@ struct LevelBar: View {
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
             ProgressView(value: 0.6)
-                .tint(.blue)
+                .tint(.main)
           }
           .padding()
           .background(.white)
