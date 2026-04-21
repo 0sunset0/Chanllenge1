@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ActivityDetailCard: View {
+struct ActivityCard: View {
     
     let completedActivity: CompletedActivity
     
@@ -17,7 +17,6 @@ struct ActivityDetailCard: View {
                 .font(.body)
             Spacer()
             Image(systemName: "chevron.right")
-                .foregroundStyle(.secondary)
         }
         .padding()
         .background(.white)
@@ -27,5 +26,5 @@ struct ActivityDetailCard: View {
 }
 
 #Preview {
-    ActivityDetailCard(completedActivity: CompletedActivity(id: UUID(), completedDate: Date(), imageName: "activity", challenge: Challenge(id: UUID(), date: Date(), title: "Challenge 1")))
+    ActivityCard(completedActivity: CompletedActivity(id: UUID(), completedDate: Date(), imageName: "activity", challenge: Challenge(id: UUID(), date: Date(), title: "Challenge 1")))
 }
