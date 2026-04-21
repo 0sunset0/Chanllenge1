@@ -111,7 +111,7 @@ struct ActivityDetail: View {
                 }
 
                 // Description
-                Text(todayChallenge.description)
+                Text(todayChallenge.summary)
                     .font(.system(size: 17))
                     .foregroundStyle(Color(white: 0.125))
                     .lineSpacing(7)
@@ -157,5 +157,4 @@ struct ActivityDetail: View {
     NavigationStack {
         ActivityDetail(todayChallenge: TodayChallenge.dummies[0])
     }
-    .environment(CompletedChallengeStore())
 }

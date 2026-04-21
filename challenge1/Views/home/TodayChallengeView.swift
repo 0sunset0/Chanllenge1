@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct TodayChallengeView: View {
     let todayChallenge: TodayChallenge
 

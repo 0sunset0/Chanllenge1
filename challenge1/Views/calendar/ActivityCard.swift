@@ -26,5 +26,17 @@ struct ActivityCard: View {
 }
 
 #Preview {
-    ActivityCard(completedActivity: CompletedActivity(id: UUID(), completedDate: Date(), imageName: "activity", todayChallenge: TodayChallenge(id: UUID(), date: Date(), title: "Challenge 1")))
-}
+      ActivityCard(
+          completedActivity: CompletedActivity(
+              completedDate: Date(),
+              imageName: "activity",
+              todayChallenge: TodayChallenge(
+                  date: Date(),
+                  title: "영일대 1바퀴, 오늘의 나를 이겨봐",
+                  location: "영일대 해수욕장",
+                  summary: "포항 영일대해수욕장 해안을 따라 이어지는 약 4km의 러닝 코스.",
+                  tags: ["러닝", "예상 30분", "4km"]
+              )
+          )
+      )
+  }

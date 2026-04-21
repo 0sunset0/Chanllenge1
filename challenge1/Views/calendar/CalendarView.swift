@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CalendarView: View {
     /**
@@ -13,11 +14,7 @@ struct CalendarView: View {
      부모 뷰(HomeView 등)에서 날짜를 제어하거나 공유해야 한다면 → @Binding
      */
     @State private var selectedDate = Date()
-    /**
-     let이 아니라 var인 이유
-     let은 선언할 때 값이 고정되는데, @Environment는 뷰가 생성된 후 SwiftUI가 값을 넣어준다.
-     */
-    @Environment(CompletedChallengeStore.self) private var store
+    @Query private var completedActivities: [CompletedActivity]
     
     var body: some View {
         NavigationStack {
@@ -52,7 +49,7 @@ struct CalendarView: View {
     }
 
     var filtered: [CompletedActivity] {
-        store.completedActivities.filter {
+        completedActivities.filter {
             // $0 = 배열의 각 액티비티
             // completedDate가 selectedDate와 같은 날인지 확인
             Calendar.current.isDate($0.completedDate, inSameDayAs: selectedDate)
@@ -62,5 +59,4 @@ struct CalendarView: View {
 
 #Preview {
     CalendarView()
-        .environment(CompletedChallengeStore())
 }

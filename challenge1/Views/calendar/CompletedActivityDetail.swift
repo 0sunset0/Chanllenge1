@@ -53,7 +53,7 @@ struct CompletedActivityDetail: View {
                         .foregroundStyle(.secondary)
 
                     // 설명
-                    Text(completedActivity.todayChallenge.description)
+                    Text(completedActivity.todayChallenge.summary)
                         .font(.body)
                         .foregroundStyle(.primary)
 
@@ -88,5 +88,4 @@ struct CompletedActivityDetail: View {
     NavigationStack {
         CompletedActivityDetail(completedActivity: CompletedActivity.dummies[0])
     }
-    .environment(CompletedChallengeStore())
 }
