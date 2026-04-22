@@ -59,7 +59,7 @@ struct HomeView: View {
     var filtered: [TodayChallenge] {
         todayChallenges.filter {
             // $0 = 배열의 각 액티비티
-            Calendar.current.isDateInToday($0.date)
+            Calendar.current.isDateInToday($0.date) && !$0.isCompleted
         }
     }
     

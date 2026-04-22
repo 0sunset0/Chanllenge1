@@ -9,10 +9,6 @@ import SwiftUI
 
 struct ActivityDetail: View {
     let todayChallenge: TodayChallenge
-    var onComplete: (() -> Void)? = nil
-    
-    @State private var showCertification = false
-    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -117,32 +113,6 @@ struct ActivityDetail: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(Color.white)
             .clipShape(UnevenRoundedRectangle(topLeadingRadius: 20, topTrailingRadius: 20))
-        }
-    }
-
-    // MARK: - Certify Button
-
-    private var certifyButton: some View {
-        Button {
-            showCertification = true
-        } label: {
-            Text("인증")
-                .frame(maxWidth: .infinity, maxHeight: 50)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-        }
-        .buttonStyle(.bordered)
-        .tint(.main)
-    }
-
-    // MARK: - Back Button
-
-    private var backButton: some View {
-        Button(action: { dismiss() }) {
-            Image(systemName: "chevron.left")
-                .font(.system(size: 17, weight: .medium))
-                .foregroundStyle(.primary)
-                .frame(width: 44, height: 48)
-                .background(.ultraThinMaterial, in: Capsule())
         }
     }
 }

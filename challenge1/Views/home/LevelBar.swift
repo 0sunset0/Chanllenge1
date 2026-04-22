@@ -16,6 +16,8 @@ struct LevelBar: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(levelName)
                 .font(.headline)
+            Text(description)
+                .font(.caption)
             ProgressView(value: progress)
                 .tint(.main)
           }
