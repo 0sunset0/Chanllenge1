@@ -34,10 +34,6 @@ struct CalendarView: View {
     
     private var activityList: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Activity")
-                .font(.title2.bold())
-                .padding(.horizontal)
-
             ForEach(filtered) { completedActivity in
                 NavigationLink(destination: CompletedActivityDetail(completedActivity: completedActivity)) {
                     ActivityCard(completedActivity: completedActivity)

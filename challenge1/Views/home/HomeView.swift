@@ -31,22 +31,27 @@ struct HomeView: View {
                         description: animal.description(for: level),
                         progress: Level.progressRatio(completedCount: completedCount)
                     )
-                    
-                    Text("Today Activity")
-                        .font(.title2.bold())
-                        .padding(.top, 30)
-                    Text("추천 액티비티를 완료하고 레벨업 해보세요")
-                        
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 20) {
-                            ForEach(filtered) { todayChallenge in
-                                NavigationLink(destination: ActivityDetail(todayChallenge: todayChallenge)) {
-                                    TodayChallengeView(todayChallenge: todayChallenge)
+                    VStack {
+                        Text("Today Activity")
+                            .font(.title2.bold())
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("추천 액티비티를 완료하고 레벨업 해보세요")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 20) {
+                                ForEach(filtered) { todayChallenge in
+                                    NavigationLink(destination: ActivityDetail(todayChallenge: todayChallenge)) {
+                                        TodayChallengeView(todayChallenge: todayChallenge)
+                                    }
+                                    .buttonStyle(.plain)
                                 }
-                                .buttonStyle(.plain)
                             }
                         }
                     }
+                    .padding(20)
+                    
+                    
                 }
                 .padding(.horizontal)
             }
